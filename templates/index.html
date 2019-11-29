@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Line Notify Gateway</title>
+{% endblock %}
+
+{% block body %}
+
+<h1>Summary Table</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Firing Count</th>
+      <th scope="col">Success Rates</th>
+      <th scope="col">Failed Rates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="col">Num of firging</th>
+      <th scope="col">Success Rates</th>
+      <th scope="col">Failed Rates</th>
+    </tr>
+  </tbody>
+</table>
+<h1>Last 20 Firing Status</h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Time</th>
+      <th scope="col">Firing Count</th>
+      <th scope="col">Success Rates</th>
+      <th scope="col">Failed Rates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Firing Count</th>
+      <th scope="col">Success Rates</th>
+      <th scope="col">Failed Rates</th>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Line Notify Logs</title>
+{% endblock %}
+
+{% block body %}
+
+<p>
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Logs from Line Notify</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for line in text.splitlines() %}
+      <tr>
+        <th>{{ line }}<th>
+      </tr>
+      {% endfor %}
+    </tbody>
+</p>
+{% endblock %}
