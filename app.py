@@ -32,7 +32,7 @@ def firing_alert(request):
     if request.json['status'] == 'firing':
         icon = "⛔⛔⛔ 😡 ⛔⛔⛔"
     else:
-        icon = "🔝🔝🔝 😎 🔝🔝🔝"
+        icon = "🔷🔷🔷 😎 🔷🔷🔷"
     header = {'Authorization':request.headers['AUTHORIZATION']}
     for alert in request.json['alerts']:
         msg = "Problem: " + icon + "\nSeverity: " + alert['labels']['severity'] + "\nTime: " + reformat_datetime(alert['startsAt']) + "\nSummary: " + alert['annotations']['summary'] + "\nDescription: " + alert['annotations']['description']
