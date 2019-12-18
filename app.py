@@ -6,6 +6,7 @@ License: MIT
 
 import logging
 import requests
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify
 
 import manage_logs
@@ -31,11 +32,15 @@ def firing_alert(request):
     """
     if request.json['status'] == 'firing':
         icon = "⛔⛔⛔ 😡 ⛔⛔⛔"
+        status = "Problem"
+        time = reformat_datetime(request.json['alerts'][0]['startsAt'])
     else:
         icon = "🔷🔷🔷 😎 🔷🔷🔷"
+        status = "OK"
+        time = str(datetime.now().date()) + ' ' + str(datetime.now().time().strftime('%H:%M:%S'))
     header = {'Authorization':request.headers['AUTHORIZATION']}
     for alert in request.json['alerts']:
-        msg = "Problem: " + icon + "\nSeverity: " + alert['labels']['severity'] + "\nTime: " + reformat_datetime(alert['startsAt']) + "\nSummary: " + alert['annotations']['summary'] + "\nDescription: " + alert['annotations']['description']
+        msg = "Alertmanger: " + icon + "\nStatus: " + status + "\nSeverity: " + alert['labels']['severity'] + "\nTime: " + time + "\nSummary: " + alert['annotations']['summary'] + "\nDescription: " + alert['annotations']['description']
         msg = {'message': msg}
         response = requests.post(LINE_NOTIFY_URL, headers=header, data=msg)
 
